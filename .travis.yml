@@ -1,0 +1,25 @@
+language: node_js
+node_js:
+  - "stable"
+
+services:
+  - postgresql
+
+cache:
+  directories:
+    - "node_modules"
+
+
+env:
+  global:
+    - CC_TEST_REPORTER_ID=8935e660c5f1e52eb88b2bc95dac06e6c15ff6d899616e9d70c3f57a0dec43ce
+before_script:
+  - psql -c 'create database sequelize_test;' -U postgres
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+script:
+  - npm run test
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - npm run coverall
