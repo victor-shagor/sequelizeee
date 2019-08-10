@@ -14,14 +14,12 @@ class Validate {
   }
   static checkValidationResult(req, res, next) {
    const errors = validationResult(req);
-   // console.log(errors.array())
    if (!errors.isEmpty()) {
     const allErrors = []
     errors.array().forEach((error) => {
      const errorMessage = error.msg
      allErrors.push(errorMessage)
     })
-    console.log(allErrors)
     util.handleError(400, allErrors);
     return util.send(res)
    }
