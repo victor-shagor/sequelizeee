@@ -2,11 +2,19 @@ require('dotenv').config();
 
 module.exports = {
   development: {
-    url: process.env.DB_URL,
+    username: 'victor_shagor',
+    password: 'oladimeji',
+    database: 'sequelize',
+    host: 'localhost',
+    port: 5432,
     dialect: 'postgres'
   },
   test: {
-    url: process.env.DB_TEST_URL,
+    username: 'victor_shagor',
+    password: 'oladimeji',
+    database: 'sequelize_test',
+    host: 'localhost',
+    port: 5432,
     dialect: 'postgres'
   },
   production: {

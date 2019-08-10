@@ -14,6 +14,7 @@ class UserController{
      util.handleSuccess(201, 'User Created', createUser)
      return util.send(res)
    }catch(error){
+     console.log(error)
     if(error.name === 'SequelizeUniqueConstraintError'){
       util.handleError(409, 'Email has already being used')
       return util.send(res)
