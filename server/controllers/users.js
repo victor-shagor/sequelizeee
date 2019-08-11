@@ -1,5 +1,5 @@
 import UserServices from '../services/users';
-import Util from '../utils/Utils';
+import Util from '../utils/utils';
 import helper from '../helpers/helper';
 
 const util = new Util();
@@ -20,6 +20,7 @@ class UserController{
       return util.send(res)
     }
     util.handleError(500, 'Something went wrong please try again later')
+    util.send(res)
    }
  }
 }
